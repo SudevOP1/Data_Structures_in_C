@@ -89,7 +89,7 @@ void delete_element() {
             printf("Value not found!\n");
         }
         else if(temp -> left == NULL && temp -> right == NULL) { // No children
-            if(temp -> left == NULL) {
+            if(par -> left == NULL) {
                 par -> left = NULL;
             } else {
                 par -> right = NULL;
