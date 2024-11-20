@@ -1,16 +1,17 @@
 // Queue using LL
-#include<stdio.h>
+#include <stdio.h>
 // #include<conio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
-
-struct Node{
+struct Node
+{
     int data;
     struct Node *next;
 };
-struct Node *front=NULL, *rear=NULL;
+struct Node *front = NULL, *rear = NULL;
 
-void enqueue(){
+void enqueue()
+{
     struct Node *newnode;
 
     newnode = (struct Node *)malloc(sizeof(struct Node));
@@ -18,22 +19,29 @@ void enqueue(){
     scanf("%d", &newnode->data);
     newnode->next = NULL;
 
-    if(front == NULL) {
+    if (front == NULL)
+    {
         rear = newnode;
         front = newnode;
-    } else {
+    }
+    else
+    {
         rear->next = newnode;
         rear = newnode;
     }
 }
 
-int dequeue(){
+int dequeue()
+{
     struct Node *temp;
     int x;
 
-    if(front == NULL) {
+    if (front == NULL)
+    {
         return -99999;
-    } else {
+    }
+    else
+    {
         temp = front;
         x = temp->data;
         front = front->next;
@@ -42,14 +50,19 @@ int dequeue(){
     }
 }
 
-void display(){
+void display()
+{
     struct Node *temp;
     temp = front;
 
-    if(front == NULL) {
+    if (front == NULL)
+    {
         printf("Queue is empty");
-    } else {
-        while(temp != rear){
+    }
+    else
+    {
+        while (temp != rear)
+        {
             printf("%d ", temp->data);
             temp = temp->next;
         }
@@ -58,26 +71,33 @@ void display(){
     printf("\n");
 }
 
-int main(){
+int main()
+{
     // clrscr();
 
-    int running =  1;
-    int choice  = -1;
+    int running = 1;
+    int choice = -1;
     int val;
 
-    while(running) {        
+    while (running)
+    {
         printf("********************\nChoices:\n1.Enqueue\n2.Dequeue\n3.Display\n4.Quit\n");
         printf("********************\nEnter choice: ");
         scanf("%d", &choice);
-        if(choice == 1) {
-            printf("Enter value to enqueue: ");
-            scanf("%d", &val);
+        if (choice == 1)
+        {
             enqueue(val);
-        } else if(choice == 2) {
+        }
+        else if (choice == 2)
+        {
             dequeue();
-        } else if(choice == 3) {
+        }
+        else if (choice == 3)
+        {
             display();
-        } else if(choice == 4) {
+        }
+        else if (choice == 4)
+        {
             running = 0;
         }
     }

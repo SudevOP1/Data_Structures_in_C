@@ -1,72 +1,93 @@
 // linear queue using array
-#include<stdio.h>
-// #include<conio.h>
+#include <stdio.h>
+// #include <conio.h>
 
 #define max 5
 int queue[5];
 int front = -1, rear = -1;
 
-void enqueue(int x) {
-    if(rear == max - 1){
+void enqueue(int x)
+{
+    if (rear == max - 1)
+    {
         printf("Queue Full\n");
     }
-    else if(rear == -1){
+    else if (rear == -1)
+    {
         front++;
         queue[++rear] = x;
     }
-    else{
+    else
+    {
         queue[++rear] = x;
     }
 }
 
-void dequeue() {
-    if(front == -1){
+void dequeue()
+{
+    if (front == -1)
+    {
         printf("Queue Empty\n");
     }
-    else if(front == rear){
-        printf("Deleted Element is %d\n",queue[front]);
+    else if (front == rear)
+    {
+        printf("Deleted Element is %d\n", queue[front]);
         front = -1;
-        rear  = -1;
+        rear = -1;
     }
-    else{
-        printf("Deleted element is %d\n",queue[front++]);
+    else
+    {
+        printf("Deleted element is %d\n", queue[front++]);
     }
 }
 
-void display() {
+void display()
+{
     int i;
-    if(front == -1){
+    if (front == -1)
+    {
         printf("Queue Empty\n");
     }
-    else{
+    else
+    {
         i = front;
-        while(i <= rear){
-            printf("%d ",queue[i++]);
+        while (i <= rear)
+        {
+            printf("%d ", queue[i++]);
         }
         printf("\n");
     }
 }
 
-int main() {
+int main()
+{
     // clrscr();
 
-    int running =  1;
-    int choice  = -1;
+    int running = 1;
+    int choice = -1;
     int val;
 
-    while(running) {        
+    while (running)
+    {
         printf("********************\nChoices:\n1.Enqueue\n2.Dequeue\n3.Display\n4.Quit\n");
         printf("********************\nEnter choice: ");
         scanf("%d", &choice);
-        if(choice == 1) {
+        if (choice == 1)
+        {
             printf("Enter value to enqueue: ");
             scanf("%d", &val);
             enqueue(val);
-        } else if(choice == 2) {
+        }
+        else if (choice == 2)
+        {
             dequeue();
-        } else if(choice == 3) {
+        }
+        else if (choice == 3)
+        {
             display();
-        } else if(choice == 4) {
+        }
+        else if (choice == 4)
+        {
             running = 0;
         }
     }
