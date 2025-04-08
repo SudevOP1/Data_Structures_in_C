@@ -1,10 +1,11 @@
 // circular queue using array
-#include <stdio.h>
-// #include <conio.h>
+#include<stdio.h>
+// #include<conio.h>
 
-#define SIZE 5
-int queue[SIZE];
-int front = -1, rear = -1;
+int circularQueue[12];
+int SIZE  = 12;
+int front = -1;
+int rear  = -1;
 
 void enqueue(int val) {
     // Queue full
@@ -12,46 +13,48 @@ void enqueue(int val) {
         printf("Queue Full\n");
     }
     // First time insertion
-    else if (rear == -1) {
+    else if(rear == -1) {
         rear  = 0;
         front = 0;
-        queue[rear] = val;
+        circularQueue[rear] = val;
     }
     // Normal insertion
     else {
         rear = (rear+1) % SIZE;
-        queue[rear] = val;
+        circularQueue[rear] = val;
     }
+
 }
 
 void dequeue() {
-    if (front == -1) {
-        printf("Queue Empty\n");
-    }
-    else {
-        printf("Deleted element is %d\n", queue[front]);
-        // Queue becomes empty
-        if (front == rear) {
-            front = -1;
-            rear  = -1;
-        }
-        else {
-            front = (front+1) % SIZE;
-        }
-    }
-}
-
-void display() {
-    if (front == -1) {
+    if(front == -1) {
         printf("Queue Empty\n");
         return;
     }
 
-    int i = front;
-    while (1) {
-        printf("%d ", queue[i]);
-        if (i == rear) break;
-        i = (i + 1) % SIZE;
+    printf("Deleted element is %d\n", circularQueue[front]);
+    // Queue becomes empty
+    if(front == rear) {
+        front = -1;
+        rear  = -1;
+        return;
+    }
+    // Queue doesnt become empty
+    front = (front+1) % SIZE;
+}
+
+void display() {
+    int i;
+    if(front == -1) {
+        printf("Queue Empty\n");
+        return;
+    }
+
+    i = front;
+    while(1) {
+        printf("%d ", circularQueue[i]);
+        if(i == rear) break;
+        i = (i+1) % SIZE;
     }
     printf("\n");
 }
